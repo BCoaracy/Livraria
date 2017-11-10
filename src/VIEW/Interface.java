@@ -16,6 +16,8 @@ public class Interface extends javax.swing.JFrame {
 
         jDesktop = new javax.swing.JDesktopPane();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -26,7 +28,13 @@ public class Interface extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setText("Autores");
+
+        jButton3.setText("Livros");
+
         jDesktop.setLayer(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktop.setLayer(jButton2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktop.setLayer(jButton3, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopLayout = new javax.swing.GroupLayout(jDesktop);
         jDesktop.setLayout(jDesktopLayout);
@@ -35,25 +43,36 @@ public class Interface extends javax.swing.JFrame {
             .addGroup(jDesktopLayout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addComponent(jButton1)
-                .addContainerGap(286, Short.MAX_VALUE))
+                .addGap(35, 35, 35)
+                .addComponent(jButton2)
+                .addGap(47, 47, 47)
+                .addComponent(jButton3)
+                .addContainerGap(266, Short.MAX_VALUE))
         );
         jDesktopLayout.setVerticalGroup(
             jDesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addComponent(jButton1)
-                .addContainerGap(238, Short.MAX_VALUE))
+                .addGroup(jDesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2)
+                    .addComponent(jButton3))
+                .addContainerGap(390, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktop)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jDesktop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktop)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jDesktop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -79,6 +98,8 @@ public class Interface extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JDesktopPane jDesktop;
     // End of variables declaration//GEN-END:variables
 }
