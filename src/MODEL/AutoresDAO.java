@@ -31,7 +31,7 @@ public class AutoresDAO {
     }
 
     public void update(AutoresBEAN autor) {
-        String query = "UPDATE EDITORAS SET Nome=?, status=? WHERE idAutor = ?";
+        String query = "UPDATE AUTORES SET Nome=?, status=? WHERE idAutor = ?";
         MySQLDAO.executeQuery(query, autor.getNome(), autor.getStatus(), autor.getIdAutor());
     }
     

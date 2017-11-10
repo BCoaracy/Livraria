@@ -25,31 +25,33 @@ public class LivrosDAO {
     }
     
     public long create(LivrosBEAN livro) {
-        String query = "INSERT INTO LIVROS (, status) VALUES (?,?)";
-        return MySQLDAO.executeQuery(query, autor.getNome(), autor.getStatus());
+        String query = "INSERT INTO LIVROS (idlivros, titulo, subtitulo, paginas, generos_idgeneros ) VALUES (?,?,?,?,?)";
+        return MySQLDAO.executeQuery(query, livro.getIdlivros(), livro.getTitulo(), livro.getSubtitulo(),
+                                        livro.getPaginas(), livro.getGeneros_idgeneros());
     }
 
     public void update(LivrosBEAN livro) {
-        String query = "UPDATE EDITORAS SET Nome=?, status=? WHERE idAutor = ?";
-        MySQLDAO.executeQuery(query, autor.getNome(), autor.getStatus(), autor.getIdAutor());
+        String query = "UPDATE LIVROS SET titulo=?, subtitulo=?, paginas=?, generos_idgerenors WHERE idlivros = ?";
+        MySQLDAO.executeQuery(query,livro.getTitulo(), livro.getSubtitulo(), livro.getPaginas(), livro.getGeneros_idgeneros(), livro.getIdlivros());
     }
     
     public void delete(LivrosBEAN livro){
-        String query = "DELETE FROM AUTORES WHERE idAutor = ?";
-        MySQLDAO.executeQuery(query, autor.getIdAutor());
+        String query = "DELETE FROM LIVROS WHERE idAutor = ?";
+        MySQLDAO.executeQuery(query, livro.getIdlivros());
     }
     
     public ArrayList<LivrosBEAN> findAllLivros(){
-        return listaAutores ("SELECT * FROM AUTORES ORDER BY Nome");
+        return listaLivros ("SELECT * FROM LIVROS ORDER BY Titulo");
     }
     
-    public ArrayList<AutoresBEAN> listaAutores(String query) {
-        ArrayList<AutoresBEAN> lista = new ArrayList<AutoresBEAN>();
+    public ArrayList<LivrosBEAN> listaLivros(String query) {
+        ArrayList<LivrosBEAN> lista = new ArrayList<LivrosBEAN>();
         ResultSet rs = null;
         rs = MySQLDAO.getResultSet(query);
         try {
             while (rs.next()) {
-                lista.add(new AutoresBEAN(rs.getInt("idAutor"), rs.getString("Nome"), rs.getInt("status")));
+                lista.add(new LivrosBEAN(rs.getInt("idlivros"), rs.getString("Titulo"), rs.getString("subtitulo"),
+                                            rs.getInt("paginas"), rs.getInt("generos_idgeneros")));
             }
             rs.close();
         } catch (SQLException e) {
@@ -58,13 +60,14 @@ public class LivrosDAO {
         return lista;
     }
     
-    public LivrosBEAN findLivro(int idAutor) {
-        AutoresBEAN result = null;
+    public LivrosBEAN findLivro(int idLivro) {
+        LivrosBEAN result = null;
         ResultSet rs = null;
-        rs = MySQLDAO.getResultSet("SELECT * FROM AUTORES WHERE idAutor=?", idAutor);
+        rs = MySQLDAO.getResultSet("SELECT * FROM LIVROS WHERE idlivros=?", idLivro);
         try {
             if (rs.next()) {
-                result = new AutoresBEAN(rs.getInt("idAutor"), rs.getString("Nome"), rs.getInt("status"));
+                result = new LivrosBEAN(rs.getInt("idlivros"), rs.getString("Titulo"), rs.getString("subtitulo"),
+                                            rs.getInt("paginas"), rs.getInt("generos_idgeneros"));
             }
             rs.close();
         } catch (SQLException e) {
