@@ -29,8 +29,18 @@ public class Interface extends javax.swing.JFrame {
         });
 
         jButton2.setText("Autores");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Livros");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jDesktop.setLayer(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktop.setLayer(jButton2, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -40,24 +50,24 @@ public class Interface extends javax.swing.JFrame {
         jDesktop.setLayout(jDesktopLayout);
         jDesktopLayout.setHorizontalGroup(
             jDesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDesktopLayout.createSequentialGroup()
-                .addGap(37, 37, 37)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopLayout.createSequentialGroup()
+                .addContainerGap(155, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(35, 35, 35)
                 .addComponent(jButton2)
                 .addGap(47, 47, 47)
                 .addComponent(jButton3)
-                .addContainerGap(266, Short.MAX_VALUE))
+                .addGap(148, 148, 148))
         );
         jDesktopLayout.setVerticalGroup(
             jDesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addGap(164, 164, 164)
                 .addGroup(jDesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2)
                     .addComponent(jButton3))
-                .addContainerGap(390, Short.MAX_VALUE))
+                .addContainerGap(256, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -82,6 +92,16 @@ public class Interface extends javax.swing.JFrame {
         // TODO add your handling code here:
         Editoras.getInstance().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        Autores.getInstance().setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        Livros.getInstance().setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     public JDesktopPane getDesktop() {
         return jDesktop;
