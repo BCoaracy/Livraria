@@ -11,14 +11,24 @@ public class LivrosBEAN {
     private String subtitulo;
     private int paginas;
     private int generos_idgeneros;
+    private int status;
 
-    public LivrosBEAN(int idlivros, String titulo, String subtitulo, int paginas, int generos_idgeneros) {
+    public LivrosBEAN(int idlivros, String titulo, String subtitulo, int paginas, int generos_idgeneros, int status) {
         this.idlivros = idlivros;
         this.titulo = titulo;
         this.subtitulo = subtitulo;
         this.paginas = paginas;
         this.generos_idgeneros = generos_idgeneros;
+        this.status = status;
     }
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
 
     public int getIdlivros() {
         return idlivros;

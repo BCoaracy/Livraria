@@ -25,14 +25,15 @@ public class LivrosDAO {
     }
     
     public long create(LivrosBEAN livro) {
-        String query = "INSERT INTO LIVROS (idlivros, titulo, subtitulo, paginas, generos_idgeneros ) VALUES (?,?,?,?,?)";
+        String query = "INSERT INTO LIVROS (idlivros, titulo, subtitulo, paginas, generos_idgeneros, status ) VALUES (?,?,?,?,?,?)";
         return MySQLDAO.executeQuery(query, livro.getIdlivros(), livro.getTitulo(), livro.getSubtitulo(),
-                                        livro.getPaginas(), livro.getGeneros_idgeneros());
+                                        livro.getPaginas(), livro.getGeneros_idgeneros(), livro.getStatus());
     }
 
     public void update(LivrosBEAN livro) {
         String query = "UPDATE LIVROS SET titulo=?, subtitulo=?, paginas=?, generos_idgerenors WHERE idlivros = ?";
-        MySQLDAO.executeQuery(query,livro.getTitulo(), livro.getSubtitulo(), livro.getPaginas(), livro.getGeneros_idgeneros(), livro.getIdlivros());
+        MySQLDAO.executeQuery(query,livro.getTitulo(), livro.getSubtitulo(), livro.getPaginas(), 
+                                livro.getGeneros_idgeneros(), livro.getIdlivros(), livro.getStatus());
     }
     
     public void delete(LivrosBEAN livro){
@@ -51,7 +52,7 @@ public class LivrosDAO {
         try {
             while (rs.next()) {
                 lista.add(new LivrosBEAN(rs.getInt("idlivros"), rs.getString("Titulo"), rs.getString("subtitulo"),
-                                            rs.getInt("paginas"), rs.getInt("generos_idgeneros")));
+                                            rs.getInt("paginas"), rs.getInt("generos_idgeneros"), rs.getInt("status")));
             }
             rs.close();
         } catch (SQLException e) {
@@ -67,7 +68,7 @@ public class LivrosDAO {
         try {
             if (rs.next()) {
                 result = new LivrosBEAN(rs.getInt("idlivros"), rs.getString("Titulo"), rs.getString("subtitulo"),
-                                            rs.getInt("paginas"), rs.getInt("generos_idgeneros"));
+                                            rs.getInt("paginas"), rs.getInt("generos_idgeneros"), rs.getInt("status"));
             }
             rs.close();
         } catch (SQLException e) {
@@ -76,16 +77,16 @@ public class LivrosDAO {
         return result;
     }
     
-    public int findIdAutor(AutoresBEAN autor) {
+    public int findIdLivro(LivrosBEAN livro) {
         int result = 0;
         ResultSet rs = null;
         rs = MySQLDAO.getResultSet(
-        "SELECT * FROM AUTORES WHERE Nome= ? and status= ? "
-                ,autor.getNome(), autor.getStatus());
+        "SELECT * FROM  LIVROS WHERE titulo= ? and status= ? "
+                ,livro.getTitulo(), livro.getStatus());
 
         try {
             if (rs.next()) {
-                result = rs.getInt("idAutor");
+                result = rs.getInt("idlivros");
             }
             rs.close();
         } catch (SQLException e) {
@@ -94,10 +95,10 @@ public class LivrosDAO {
         return result;
     }
     
-    public Boolean isExist(int idAutor) {
+    public Boolean isExist(int idLivro) {
         Boolean result = false;
         ResultSet rs = null;
-        rs = MySQLDAO.getResultSet("SELECT * FROM AUTORES WHERE idAutor= ?", idAutor);
+        rs = MySQLDAO.getResultSet("SELECT * FROM LIVROS WHERE idlivros= ?", idLivro);
         try {
             if (rs.next()) {
                 result = true;
