@@ -37,6 +37,9 @@ public class CadastrarLivros extends javax.swing.JInternalFrame {
         jButton1 = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
 
+        setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+
         jLabel1.setText("Titulo:");
 
         jLabel2.setText("Subtitulo:");
