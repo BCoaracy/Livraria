@@ -3,12 +3,8 @@ package CONTROLLER;
 import java.util.ArrayList;
 import java.util.Date;
 
-import MODEL.EditorasBEAN;
-import MODEL.EditorasDAO;
-import MODEL.AutoresBEAN;
-import MODEL.AutoresDAO;
-import MODEL.LivrosBEAN;
-import MODEL.LivrosDAO;
+import MODEL.*;
+
 
 public class Controle {
     public Controle(){

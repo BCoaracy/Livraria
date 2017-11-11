@@ -62,6 +62,8 @@ public class CadastrarAutores extends javax.swing.JInternalFrame {
         String name = nome.getText();
         AutoresBEAN autor = new AutoresBEAN();
         autor.setNome(name);
+        autor.setIdAutor(WIDTH);
+        autor.setStatus(WIDTH);
         AutoresDAO.getInstance().create(autor);
     }//GEN-LAST:event_jButton1ActionPerformed
 

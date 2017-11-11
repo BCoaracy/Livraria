@@ -49,7 +49,7 @@ public class EditorasDAO {
         rs = MySQLDAO.getResultSet(query);
         try {
             while (rs.next()) {
-                lista.add(new EditorasBEAN(rs.getInt("id"), rs.getString("Razao"), rs.getString("Endereco"),
+                lista.add(new EditorasBEAN(rs.getString("Razao"), rs.getString("Endereco"),
                         rs.getString("Telefone")));
             }
             rs.close();

@@ -7,7 +7,17 @@ public class EditorasBEAN {
     private String razao;
     private String endereco;
     private String telefone;
+    
+    public EditorasBEAN(){
+        
+    }
 
+    public EditorasBEAN(String razao, String endereco, String telefone) {
+        this.razao = razao;
+        this.endereco = endereco;
+        this.telefone = telefone;
+    }
+    
     public EditorasBEAN(int id, String razao, String endereco, String telefone) {
         this.id = id;
         this.razao = razao;
@@ -41,6 +51,10 @@ public class EditorasBEAN {
 
     public int getId() {
         return id;
+    }
+    
+    public void setId(int id){
+        this.id=id;
     }
     
 }

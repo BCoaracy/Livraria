@@ -15,6 +15,10 @@ public class AutoresBEAN {
     private String Nome;
     private int status;
     
+    public AutoresBEAN(){
+        
+    }
+    
     public AutoresBEAN(int idAutor, String Nome, int status){
         this.idAutor = idAutor;
         this.Nome = Nome;
