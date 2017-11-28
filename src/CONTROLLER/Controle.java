@@ -72,23 +72,23 @@ public class Controle {
 
 //Controle Livros;
     
-    public void addLivro(LivrosBEAN livro){
+    public void addLivros(LivrosBEAN livro){
         LivrosDAO.getInstance().create(livro);
     }
     
-    public void updateAutor(LivrosBEAN livro){
+    public void updateLivros(LivrosBEAN livro){
         LivrosDAO.getInstance().update(livro);
     }
     
-    public void DeleteEditoras(LivrosBEAN livro){
+    public void DeleteLivros(LivrosBEAN livro){
         LivrosDAO.getInstance().delete(livro);
     }
     
-    public LivrosBEAN findLivro(int id){
+    public LivrosBEAN findLivros(int id){
         return LivrosDAO.getInstance().findLivro(id);
     }
     
-    public int findIdLivro(LivrosBEAN livro){
+    public int findIdLivros(LivrosBEAN livro){
         return LivrosDAO.getInstance().findIdLivro(livro);
     }
     
