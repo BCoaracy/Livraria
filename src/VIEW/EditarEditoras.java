@@ -27,6 +27,7 @@ public class EditarEditoras extends javax.swing.JInternalFrame {
         labelAlterado = new javax.swing.JLabel();
 
         setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Id Editora");
@@ -71,7 +72,7 @@ public class EditarEditoras extends javax.swing.JInternalFrame {
     
             
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        labelAlterado.setVisible(false);
+        
         Controle control = new Controle();
         EditorasBEAN editora = new EditorasBEAN();
         editora = control.findEditora(Integer.parseInt(textID.getText()));
