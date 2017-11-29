@@ -71,12 +71,28 @@ public class AutoresDAO {
         int result = 0;
         ResultSet rs = null;
         rs = MySQLDAO.getResultSet(
-        "SELECT * FROM AUTORES WHERE Nome= ? and status= ? "
+        "SELECT * FROM AUTORES WHERE Nome= ? and status= ?"
                 ,autor.getNome(), autor.getStatus());
 
         try {
             if (rs.next()) {
                 result = rs.getInt("idAutor");
+            }
+            rs.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+    
+    public AutoresBEAN findIdAutorNome(String nomeAutor){
+        AutoresBEAN result = null;
+        ResultSet rs = null;
+        nomeAutor = "%"+nomeAutor+"%";
+        rs = MySQLDAO.getResultSet("SELECT * FROM AUTORES WHERE Nome like ?", nomeAutor);
+        try {
+            if (rs.next()) {
+                result = new AutoresBEAN(rs.getInt("idAutor"), rs.getString("Nome"), rs.getInt("status"));
             }
             rs.close();
         } catch (SQLException e) {

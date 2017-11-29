@@ -62,6 +62,10 @@ public class Controle {
         return AutoresDAO.getInstance().findIdAutor(autor);
     }
     
+    public AutoresBEAN findIdAutorNome(String nomeAutor){
+        return AutoresDAO.getInstance().findIdAutorNome(nomeAutor);
+    }
+    
     public Boolean ExisteAutor(int id){
         return AutoresDAO.getInstance().isExist(id);
     }

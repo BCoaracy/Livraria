@@ -2,6 +2,9 @@ package VIEW;
 
 import CONTROLLER.Controle;
 import MODEL.AutoresBEAN;
+import static java.lang.Thread.sleep;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class EditarAutor extends javax.swing.JInternalFrame {
 
@@ -137,6 +140,7 @@ public class EditarAutor extends javax.swing.JInternalFrame {
     private void aplicarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aplicarActionPerformed
         Controle control = new Controle();
         AutoresBEAN autor = new AutoresBEAN();
+        autor.setIdAutor(Integer.parseInt(textID.getText()));
         autor.setNome(textNome.getText());
         if(jRBAtivo.isSelected())
             autor.setStatus(1);
@@ -150,7 +154,6 @@ public class EditarAutor extends javax.swing.JInternalFrame {
         jRBInativo.setSelected(false);
 
         labelAlterado.setVisible(true);
-
     }//GEN-LAST:event_aplicarActionPerformed
 
     private void buscarIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarIDActionPerformed
@@ -180,9 +183,7 @@ public class EditarAutor extends javax.swing.JInternalFrame {
     private void buscarNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarNomeActionPerformed
         Controle control = new Controle();
         AutoresBEAN autor = new AutoresBEAN();
-        autor.setNome(textNome.getText());
-        int idAutor = control.findIdAutor(autor);
-        autor = control.findAutor(idAutor);
+        autor=control.findIdAutorNome(textNome.getText());
         textID.setText(Integer.toString(autor.getIdAutor()));
         textNome.setText(autor.getNome());
         if(autor.getStatus()!=0){
