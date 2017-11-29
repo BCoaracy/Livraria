@@ -104,4 +104,18 @@ public class Controle {
         return LivrosDAO.getInstance().findAllLivros();
     }
     
+//Controle Generos
+    
+    public void addGenero(GenerosBEAN genero){
+        GenerosDAO.getInstance().create(genero);
+    }
+    
+    public void updateGeneros(GenerosBEAN genero){
+        GenerosDAO.getInstance().update(genero);
+    }
+    
+    public ArrayList<GenerosBEAN> listaGeneros(){
+        return GenerosDAO.getInstance().findAllGeneros();
+    }
+    
 }
