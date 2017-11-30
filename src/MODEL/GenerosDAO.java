@@ -19,7 +19,7 @@ public class GenerosDAO {
     }
     
     public long create(GenerosBEAN genero) {
-        String query = "INSERT INTO GENEROS (GENERO) VALUES (?)";
+        String query = "INSERT INTO GENEROS (genero) VALUES (?)";
         return MySQLDAO.executeQuery(query, genero.getGenero());
     }
 
