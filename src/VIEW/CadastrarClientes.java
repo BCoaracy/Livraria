@@ -11,7 +11,7 @@ public class CadastrarClientes extends javax.swing.JInternalFrame {
 
     public CadastrarClientes() {
         initComponents();
-        jLabel3.setVisible(false);
+        jLabel1.setVisible(false);
     }
 
     
@@ -53,19 +53,19 @@ public class CadastrarClientes extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
+                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3))
                 .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(textNome, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-                        .addComponent(textCPF))
+                        .addComponent(textNome)
+                        .addComponent(textCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jLabel1)
                         .addComponent(cadastrar)))
-                .addContainerGap(102, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -98,14 +98,14 @@ public class CadastrarClientes extends javax.swing.JInternalFrame {
         } catch (InterruptedException ex) {
             Logger.getLogger(CadastrarClientes.class.getName()).log(Level.SEVERE, null, ex);
         }
-        jLabel3.setVisible(false);
+        jLabel1.setVisible(false);
     }
     
     private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
         Controle control = new Controle();
         ClientesBEAN cliente = new ClientesBEAN(textNome.getText(), textCPF.getText());
         control.addCliente(cliente);
-        jLabel3.setVisible(true);
+        jLabel1.setVisible(true);
         sleepLabel();
     }//GEN-LAST:event_cadastrarActionPerformed
 

@@ -140,8 +140,8 @@ public class Controle {
         return ClientesDAO.getInstance().findIdCliente(cliente);
     }
     
-    public ClientesBEAN findIdClienteNome(String nomeAutor){
-        return ClientesDAO.getInstance().findIdClienteNome(nomeAutor);
+    public ClientesBEAN findIdClienteNome(String nomeCliente){
+        return ClientesDAO.getInstance().findIdClienteNome(nomeCliente);
     }
     
     public Boolean ExisteCliente(int id){

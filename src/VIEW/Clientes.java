@@ -63,11 +63,11 @@ public class Clientes extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void CadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastrarActionPerformed
-        // TODO add your handling code here:
+        CadastrarClientes.getInstance().setVisible(true);
     }//GEN-LAST:event_CadastrarActionPerformed
 
     private void AlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AlterarActionPerformed
-        // TODO add your handling code here:
+        EditarClientes.getInstance().setVisible(true);
     }//GEN-LAST:event_AlterarActionPerformed
 
     private static Clientes instance = null;
