@@ -118,4 +118,38 @@ public class Controle {
         return GenerosDAO.getInstance().findAllGeneros();
     }
     
+//Controle Clientes
+
+    public void addCliente(ClientesBEAN cliente){
+        ClientesDAO.getInstance().create(cliente);
+    }
+    
+    public void updateAutor(ClientesBEAN cliente){
+        ClientesDAO.getInstance().update(cliente);
+    }
+    
+    public void DeleteEditoras(ClientesBEAN cliente){
+        ClientesDAO.getInstance().delete(cliente);
+    }
+    
+    public ClientesBEAN findCliente(int id){
+        return ClientesDAO.getInstance().findCliente(id);
+    }
+    
+    public int findIdCliente(ClientesBEAN cliente){
+        return ClientesDAO.getInstance().findIdCliente(cliente);
+    }
+    
+    public ClientesBEAN findIdClienteNome(String nomeAutor){
+        return ClientesDAO.getInstance().findIdClienteNome(nomeAutor);
+    }
+    
+    public Boolean ExisteCliente(int id){
+        return ClientesDAO.getInstance().isExist(id);
+    }
+    
+    public ArrayList<ClientesBEAN> listaClientes(){
+        return ClientesDAO.getInstance().findAllClientes();
+    }
+    
 }

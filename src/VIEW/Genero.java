@@ -10,6 +10,7 @@ public class Genero extends javax.swing.JInternalFrame {
     
     public Genero() {
         initComponents();
+        atualizarCombobox();
     }
 
     
@@ -24,6 +25,9 @@ public class Genero extends javax.swing.JInternalFrame {
         textGenero = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         textCheck = new javax.swing.JTextField();
+
+        setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
 
         alterar.setText("Alterar");
         alterar.addActionListener(new java.awt.event.ActionListener() {
@@ -101,7 +105,7 @@ public class Genero extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboGeneroActionPerformed
+    private void atualizarCombobox(){
         Controle control = new Controle();
         ArrayList<GenerosBEAN> generos = new ArrayList();
         generos = control.listaGeneros();
@@ -112,6 +116,10 @@ public class Genero extends javax.swing.JInternalFrame {
             x++;
         }
         JComboBox jcb = new JComboBox(genList);
+    }    
+    
+    private void jComboGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboGeneroActionPerformed
+        
     }//GEN-LAST:event_jComboGeneroActionPerformed
 
     private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
