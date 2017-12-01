@@ -47,8 +47,6 @@ public class CadastrarLivros extends javax.swing.JInternalFrame {
             }
         });
 
-        comboGeneros.setModel(null);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(

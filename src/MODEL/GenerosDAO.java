@@ -25,7 +25,7 @@ public class GenerosDAO {
 
     public void update(GenerosBEAN genero) {
         String query = "UPDATE GENEROS SET GENERO = ? WHERE idgeneros  = ?";
-        MySQLDAO.executeQuery(query, genero.getIdGenero(), genero.getGenero());
+        MySQLDAO.executeQuery(query, genero.getGenero(), genero.getIdGenero());
     }
 
     public void delete(GenerosBEAN genero) {
@@ -33,7 +33,7 @@ public class GenerosDAO {
     }
 
     public ArrayList<GenerosBEAN> findAllGeneros() {
-        return listaGeneros("SELECT * FROM GENEROS ORDER BY idGenero");
+        return listaGeneros("SELECT * FROM GENEROS ORDER BY idgeneros");
     }
 
     public ArrayList<GenerosBEAN> listaGeneros(String query) {

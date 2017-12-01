@@ -110,7 +110,7 @@ public class Genero extends javax.swing.JInternalFrame {
         Controle control = new Controle();
         
         generos = control.listaGeneros();
-        
+        jComboGenero.removeAllItems();
         for(GenerosBEAN g :generos){
             jComboGenero.addItem(g.getGenero());
         }
@@ -128,6 +128,7 @@ public class Genero extends javax.swing.JInternalFrame {
         control.addGenero(genero);
         textGenero.setText(null);
         textCheck.setText("Cadastrado!");
+        atualizarCombobox();
     }//GEN-LAST:event_cadastrarActionPerformed
 
     private void alterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alterarActionPerformed
@@ -135,6 +136,7 @@ public class Genero extends javax.swing.JInternalFrame {
         GenerosBEAN genero = new GenerosBEAN(textGenero.getText());
         control.updateGeneros(genero);
         textCheck.setText("Alterado!");
+        atualizarCombobox();
     }//GEN-LAST:event_alterarActionPerformed
 
     private static Genero instance = null;
