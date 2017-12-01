@@ -1,6 +1,7 @@
 package VIEW;
 
 import CONTROLLER.Controle;
+import MODEL.AutoresBEAN;
 import MODEL.GenerosBEAN;
 import MODEL.LivrosBEAN;
 import java.util.ArrayList;
@@ -8,6 +9,7 @@ import java.util.ArrayList;
 public class CadastrarLivros extends javax.swing.JInternalFrame {
 
     ArrayList<GenerosBEAN> generos = new ArrayList();
+    ArrayList<AutoresBEAN> autores = new ArrayList();
     
     public CadastrarLivros() {
         initComponents();
@@ -28,6 +30,8 @@ public class CadastrarLivros extends javax.swing.JInternalFrame {
         textPag = new javax.swing.JTextField();
         bCadastrar = new javax.swing.JButton();
         comboGeneros = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
+        comboAutores = new javax.swing.JComboBox<>();
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
@@ -47,35 +51,38 @@ public class CadastrarLivros extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel5.setText("Autores:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(37, 37, 37)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(bCadastrar)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(18, 18, 18)
-                                .addComponent(comboGeneros, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(18, 18, 18)
-                                .addComponent(textPag))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(18, 18, 18)
-                                .addComponent(textSubTitulo))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(18, 18, 18)
-                                .addComponent(textTitulo))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(155, 155, 155)
-                        .addComponent(bCadastrar)))
-                .addContainerGap(67, Short.MAX_VALUE))
+                        .addComponent(jLabel5)
+                        .addGap(18, 18, 18)
+                        .addComponent(comboAutores, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel4)
+                            .addGap(18, 18, 18)
+                            .addComponent(comboGeneros, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel3)
+                            .addGap(18, 18, 18)
+                            .addComponent(textPag))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel2)
+                            .addGap(18, 18, 18)
+                            .addComponent(textSubTitulo))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel1)
+                            .addGap(18, 18, 18)
+                            .addComponent(textTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(90, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -96,9 +103,13 @@ public class CadastrarLivros extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(comboGeneros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(46, 46, 46)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(comboAutores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(38, 38, 38)
                 .addComponent(bCadastrar)
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         pack();
@@ -110,20 +121,24 @@ public class CadastrarLivros extends javax.swing.JInternalFrame {
         for(GenerosBEAN g :generos){
             comboGeneros.addItem(g.getGenero());
         }
+        autores = control.listaAutores();
+        for(AutoresBEAN a : autores){
+            comboAutores.addItem(a.getNome());
+        }
         
     }
     
-    private void genSearch(){
-        
-    }
     
     private void bCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCadastrarActionPerformed
         Controle control = new Controle();
         String titulo = textTitulo.getText();
         String subtitulo = textSubTitulo.getText();
         int paginas = Integer.parseInt(textPag.getText());
-        int genero = comboGeneros.getSelectedIndex();
-        LivrosBEAN livro = new LivrosBEAN(titulo, subtitulo, paginas, genero);
+        int genero = comboGeneros.getSelectedIndex()+1;
+        int autor = comboAutores.getSelectedIndex()+1;
+        int status = 1;
+        LivrosBEAN livro = new LivrosBEAN(titulo, subtitulo, paginas, genero, status, autor);
+        control.addLivros(livro);
     }//GEN-LAST:event_bCadastrarActionPerformed
 
     private static CadastrarLivros instance = null;
@@ -137,11 +152,13 @@ public class CadastrarLivros extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bCadastrar;
+    private javax.swing.JComboBox<String> comboAutores;
     private javax.swing.JComboBox<String> comboGeneros;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField textPag;
     private javax.swing.JTextField textSubTitulo;
     private javax.swing.JTextField textTitulo;

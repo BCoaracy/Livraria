@@ -8,14 +8,33 @@ public class LivrosBEAN {
     private int paginas;
     private int generos_idgeneros;
     private int status;
+    private int idautor;
+    
+    public int getIdautor() {
+        return idautor;
+    }
 
-    public LivrosBEAN(int idlivros, String titulo, String subtitulo, int paginas, int generos_idgeneros, int status) {
+    public void setIdautor(int idautor) {
+        this.idautor = idautor;
+    }
+
+    public LivrosBEAN(int idlivros, String titulo, String subtitulo, int paginas, int generos_idgeneros, int status, int idautor) {
         this.idlivros = idlivros;
         this.titulo = titulo;
         this.subtitulo = subtitulo;
         this.paginas = paginas;
         this.generos_idgeneros = generos_idgeneros;
         this.status = status;
+        this.idautor = idautor;
+    }
+    public LivrosBEAN(String titulo, String subtitulo, int paginas, int generos_idgeneros, int status, int idautor) {
+        
+        this.titulo = titulo;
+        this.subtitulo = subtitulo;
+        this.paginas = paginas;
+        this.generos_idgeneros = generos_idgeneros;
+        this.status = status;
+        this.idautor = idautor;
     }
     public LivrosBEAN(String titulo, String subtitulo, int paginas, int generos_idgeneros){
         this.titulo = titulo;
@@ -23,6 +42,14 @@ public class LivrosBEAN {
         this.paginas = paginas;
         this.generos_idgeneros = generos_idgeneros;
     }
+    public LivrosBEAN(int idlivros, String titulo, String subtitulo, int paginas, int status){
+        this.idlivros = idlivros;
+        this.titulo = titulo;
+        this.subtitulo = subtitulo;
+        this.paginas = paginas;
+        this.status = status;
+    }
+        
     public int getStatus() {
         return status;
     }

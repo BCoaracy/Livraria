@@ -78,6 +78,8 @@ public class Controle {
     
     public void addLivros(LivrosBEAN livro){
         LivrosDAO.getInstance().create(livro);
+        LivrosDAO.getInstance().createAuxGen(livro);
+        LivrosDAO.getInstance().ceateAuxAutor(livro);
     }
     
     public void updateLivros(LivrosBEAN livro){

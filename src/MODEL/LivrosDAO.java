@@ -25,17 +25,24 @@ public class LivrosDAO {
     }
     
     public long create(LivrosBEAN livro) {
-        String query = "INSERT INTO LIVROS (idlivros, titulo, subtitulo, paginas, status ) VALUES (?,?,?,?,?)";
-        createAuxGen(livro);
-        return MySQLDAO.executeQuery(query, livro.getIdlivros(), livro.getTitulo(), livro.getSubtitulo(),
+        String query = "INSERT INTO LIVROS (titulo, subtitulo, paginas, status ) VALUES (?,?,?,?,?)";
+        return MySQLDAO.executeQuery(query, livro.getTitulo(), livro.getSubtitulo(),
                                         livro.getPaginas(), livro.getGeneros_idgeneros(), livro.getStatus());
     }
     
     public long createAuxGen(LivrosBEAN livro){
-        String query = "INSERT INTO LIVROS_AUX (idlivros, idgeneros) VALUES (?,?)";
-        return MySQLDAO.executeQuery(query,livro.getIdlivros(), livro.getGeneros_idgeneros());
+        String query = "INSERT INTO GENEROS_LIVROS (idlivros, idgeneros) VALUES (?,?)";
+        //return MySQLDAO.executeQuery(query,livro.getIdlivros(), livro.getGeneros_idgeneros());
+        return MySQLDAO.executeQuery(query,findIdLivro(livro), livro.getGeneros_idgeneros());
         
     }
+    
+    public long ceateAuxAutor(LivrosBEAN livro){
+        String query = "INSERT INTO autores_livros (idlivros, idAutor) VALUES (?,?)";
+        //return MySQLDAO.executeQuery(query,livro.getIdlivros(), livro.getIdautor());
+        return MySQLDAO.executeQuery(query,findIdLivro(livro), livro.getIdautor());
+    }
+    
     public void update(LivrosBEAN livro) {
         String query = "UPDATE LIVROS SET titulo=?, subtitulo=?, paginas=?, generos_idgerenors WHERE idlivros = ?";
         MySQLDAO.executeQuery(query,livro.getTitulo(), livro.getSubtitulo(), livro.getPaginas(), 
@@ -58,7 +65,7 @@ public class LivrosDAO {
         try {
             while (rs.next()) {
                 lista.add(new LivrosBEAN(rs.getInt("idlivros"), rs.getString("Titulo"), rs.getString("subtitulo"),
-                                            rs.getInt("paginas"), rs.getInt("generos_idgeneros"), rs.getInt("status")));
+                                            rs.getInt("paginas"), rs.getInt("status")));
             }
             rs.close();
         } catch (SQLException e) {
@@ -74,7 +81,7 @@ public class LivrosDAO {
         try {
             if (rs.next()) {
                 result = new LivrosBEAN(rs.getInt("idlivros"), rs.getString("Titulo"), rs.getString("subtitulo"),
-                                            rs.getInt("paginas"), rs.getInt("generos_idgeneros"), rs.getInt("status"));
+                                            rs.getInt("paginas"), rs.getInt("status"));
             }
             rs.close();
         } catch (SQLException e) {
