@@ -37,10 +37,20 @@ public class LivrosDAO {
         
     }
     
-    public long ceateAuxAutor(LivrosBEAN livro){
+    public void deleteAuxGen(LivrosBEAN livro){
+        String query = "DELETE FROM GENEROS_LIVROS WHERE idlivros = ? and idgeneros = ?";
+        MySQLDAO.executeQuery(query, livro.getIdlivros(), livro.getGeneros_idgeneros());
+    }
+    
+    public long createAuxAutor(LivrosBEAN livro){
         String query = "INSERT INTO autores_livros (idlivros, idAutor) VALUES (?,?)";
         //return MySQLDAO.executeQuery(query,livro.getIdlivros(), livro.getIdautor());
         return MySQLDAO.executeQuery(query,findIdLivro(livro), livro.getIdautor());
+    }
+    
+    public void deleteAuxAutor(LivrosBEAN livro){
+        String query = "DELETE FROM AUTORES_LIVROS WHERE idlivros = ? and idAutor = ?";
+        MySQLDAO.executeQuery(query, livro.getIdlivros(), livro.getIdautor());
     }
     
     public void update(LivrosBEAN livro) {
