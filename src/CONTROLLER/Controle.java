@@ -118,6 +118,10 @@ public class Controle {
         return GenerosDAO.getInstance().findAllGeneros();
     }
     
+    public int findGenero(GenerosBEAN genero){
+        return GenerosDAO.getInstance().findId(genero);
+    }
+    
 //Controle Clientes
 
     public void addCliente(ClientesBEAN cliente){

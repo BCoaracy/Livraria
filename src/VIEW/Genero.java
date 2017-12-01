@@ -134,6 +134,7 @@ public class Genero extends javax.swing.JInternalFrame {
     private void alterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alterarActionPerformed
         Controle control = new Controle();
         GenerosBEAN genero = new GenerosBEAN(textGenero.getText());
+        genero.setIdGenero(control.findGenero(genero));
         control.updateGeneros(genero);
         textCheck.setText("Alterado!");
         atualizarCombobox();
