@@ -33,7 +33,7 @@ public class GenerosDAO {
     }
 
     public ArrayList<GenerosBEAN> findAllGeneros() {
-        return listaGeneros("SELECT * FROM GENEROS ORDER BY genero");
+        return listaGeneros("SELECT * FROM GENEROS ORDER BY idGenero");
     }
 
     public ArrayList<GenerosBEAN> listaGeneros(String query) {

@@ -7,7 +7,7 @@ import javax.swing.JComboBox;
 
 public class Genero extends javax.swing.JInternalFrame {
 
-    
+    ArrayList<GenerosBEAN> generos = new ArrayList();
     
     public Genero() {
         initComponents();
@@ -55,6 +55,7 @@ public class Genero extends javax.swing.JInternalFrame {
         jLabel1.setText("Generos");
 
         textCheck.setEditable(false);
+        textCheck.setBorder(null);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -71,9 +72,9 @@ public class Genero extends javax.swing.JInternalFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(Genero)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(textGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jComboGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(textGenero, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
+                                    .addComponent(jComboGenero, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(14, 14, 14)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -107,9 +108,9 @@ public class Genero extends javax.swing.JInternalFrame {
 
     private void atualizarCombobox(){
         Controle control = new Controle();
-        ArrayList<GenerosBEAN> generos = new ArrayList();
+        
         generos = control.listaGeneros();
-        String[] genList = new String[50];
+        
         for(GenerosBEAN g :generos){
             jComboGenero.addItem(g.getGenero());
         }
@@ -117,7 +118,8 @@ public class Genero extends javax.swing.JInternalFrame {
     }    
     
     private void jComboGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboGeneroActionPerformed
-        
+        String texto = (String) jComboGenero.getSelectedItem();
+        textGenero.setText(texto);
     }//GEN-LAST:event_jComboGeneroActionPerformed
 
     private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
@@ -129,11 +131,10 @@ public class Genero extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cadastrarActionPerformed
 
     private void alterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alterarActionPerformed
-//        Controle control = new Controle();
-//        GenerosBEAN genero = new GenerosBEAN(textGenero.getText());
-//        genero.setIdGenero();
-//        control.updateGeneros(genero);
-        textCheck.setText("Implementar");
+        Controle control = new Controle();
+        GenerosBEAN genero = new GenerosBEAN(textGenero.getText());
+        control.updateGeneros(genero);
+        textCheck.setText("Alterado!");
     }//GEN-LAST:event_alterarActionPerformed
 
     private static Genero instance = null;

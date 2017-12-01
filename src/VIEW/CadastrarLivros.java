@@ -1,13 +1,17 @@
 package VIEW;
 
 import CONTROLLER.Controle;
+import MODEL.GenerosBEAN;
 import MODEL.LivrosBEAN;
+import java.util.ArrayList;
 
 public class CadastrarLivros extends javax.swing.JInternalFrame {
 
+    ArrayList<GenerosBEAN> generos = new ArrayList();
+    
     public CadastrarLivros() {
         initComponents();
-        
+        atualizarCombobox();
     }
 
 
@@ -22,7 +26,7 @@ public class CadastrarLivros extends javax.swing.JInternalFrame {
         textTitulo = new javax.swing.JTextField();
         textSubTitulo = new javax.swing.JTextField();
         textPag = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        bCadastrar = new javax.swing.JButton();
         comboGeneros = new javax.swing.JComboBox<>();
 
         setClosable(true);
@@ -36,14 +40,14 @@ public class CadastrarLivros extends javax.swing.JInternalFrame {
 
         jLabel4.setText("Gêneros:");
 
-        jButton1.setText("Cadastrar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        bCadastrar.setText("Cadastrar");
+        bCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                bCadastrarActionPerformed(evt);
             }
         });
 
-        comboGeneros.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboGeneros.setModel(null);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -72,7 +76,7 @@ public class CadastrarLivros extends javax.swing.JInternalFrame {
                                 .addComponent(textTitulo))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(155, 155, 155)
-                        .addComponent(jButton1)))
+                        .addComponent(bCadastrar)))
                 .addContainerGap(67, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -95,21 +99,34 @@ public class CadastrarLivros extends javax.swing.JInternalFrame {
                     .addComponent(jLabel4)
                     .addComponent(comboGeneros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(46, 46, 46)
-                .addComponent(jButton1)
+                .addComponent(bCadastrar)
                 .addContainerGap(53, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void atualizarCombobox(){
+        Controle control = new Controle(); 
+        generos = control.listaGeneros();
+        for(GenerosBEAN g :generos){
+            comboGeneros.addItem(g.getGenero());
+        }
+        
+    }
+    
+    private void genSearch(){
+        
+    }
+    
+    private void bCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCadastrarActionPerformed
         Controle control = new Controle();
         String titulo = textTitulo.getText();
         String subtitulo = textSubTitulo.getText();
         int paginas = Integer.parseInt(textPag.getText());
         int genero = comboGeneros.getSelectedIndex();
         LivrosBEAN livro = new LivrosBEAN(titulo, subtitulo, paginas, genero);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_bCadastrarActionPerformed
 
     private static CadastrarLivros instance = null;
     public static CadastrarLivros getInstance() {
@@ -121,8 +138,8 @@ public class CadastrarLivros extends javax.swing.JInternalFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bCadastrar;
     private javax.swing.JComboBox<String> comboGeneros;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

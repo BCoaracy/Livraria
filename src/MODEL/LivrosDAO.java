@@ -25,11 +25,15 @@ public class LivrosDAO {
     }
     
     public long create(LivrosBEAN livro) {
-        String query = "INSERT INTO LIVROS (idlivros, titulo, subtitulo, paginas, generos_idgeneros, status ) VALUES (?,?,?,?,?,?)";
+        String query = "INSERT INTO LIVROS (idlivros, titulo, subtitulo, paginas, status ) VALUES (?,?,?,?,?)";
         return MySQLDAO.executeQuery(query, livro.getIdlivros(), livro.getTitulo(), livro.getSubtitulo(),
                                         livro.getPaginas(), livro.getGeneros_idgeneros(), livro.getStatus());
     }
-
+    public long createAuxGen(LivrosBEAN livro){
+        String query = "INSERT INTO LIVROS_AUX (idlivros, idgeneros) VALUES (?,?)";
+        return MySQLDAO.executeQuery(query,livro.getIdlivros(), livro.getGeneros_idgeneros());
+        
+    }
     public void update(LivrosBEAN livro) {
         String query = "UPDATE LIVROS SET titulo=?, subtitulo=?, paginas=?, generos_idgerenors WHERE idlivros = ?";
         MySQLDAO.executeQuery(query,livro.getTitulo(), livro.getSubtitulo(), livro.getPaginas(), 
