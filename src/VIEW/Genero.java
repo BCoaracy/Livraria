@@ -8,6 +8,7 @@ import javax.swing.JComboBox;
 public class Genero extends javax.swing.JInternalFrame {
 
     
+    
     public Genero() {
         initComponents();
         atualizarCombobox();
@@ -43,7 +44,6 @@ public class Genero extends javax.swing.JInternalFrame {
             }
         });
 
-        jComboGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboGenero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboGeneroActionPerformed(evt);
@@ -110,12 +110,10 @@ public class Genero extends javax.swing.JInternalFrame {
         ArrayList<GenerosBEAN> generos = new ArrayList();
         generos = control.listaGeneros();
         String[] genList = new String[50];
-        int x =0;
         for(GenerosBEAN g :generos){
-            genList[x] = g.getGenero();
-            x++;
+            jComboGenero.addItem(g.getGenero());
         }
-        JComboBox jcb = new JComboBox(genList);
+        
     }    
     
     private void jComboGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboGeneroActionPerformed
