@@ -25,9 +25,9 @@ public class LivrosDAO {
     }
     
     public long create(LivrosBEAN livro) {
-        String query = "INSERT INTO LIVROS (titulo, subtitulo, paginas, status ) VALUES (?,?,?,?,?)";
+        String query = "INSERT INTO LIVROS (titulo, subtitulo, paginas, editoras_id status ) VALUES (?,?,?,?,?)";
         return MySQLDAO.executeQuery(query, livro.getTitulo(), livro.getSubtitulo(),
-                                        livro.getPaginas(), livro.getGeneros_idgeneros(), livro.getStatus());
+                                        livro.getPaginas(), livro.getIdEditora(), livro.getStatus());
     }
     
     public long createAuxGen(LivrosBEAN livro){
@@ -74,7 +74,7 @@ public class LivrosDAO {
         rs = MySQLDAO.getResultSet(query);
         try {
             while (rs.next()) {
-                lista.add(new LivrosBEAN(rs.getInt("idlivros"), rs.getString("Titulo"), rs.getString("subtitulo"),
+                lista.add(new LivrosBEAN(rs.getInt("idlivros"), rs.getString("Titulo"), rs.getString("subtitulo"), rs.getInt("editoras_id"),
                                             rs.getInt("paginas"), rs.getInt("status")));
             }
             rs.close();
@@ -91,7 +91,7 @@ public class LivrosDAO {
         try {
             if (rs.next()) {
                 result = new LivrosBEAN(rs.getInt("idlivros"), rs.getString("Titulo"), rs.getString("subtitulo"),
-                                            rs.getInt("paginas"), rs.getInt("status"));
+                                            rs.getInt("paginas"),rs.getInt("editoras_id"), rs.getInt("status"));
             }
             rs.close();
         } catch (SQLException e) {
@@ -110,6 +110,23 @@ public class LivrosDAO {
         try {
             if (rs.next()) {
                 result = rs.getInt("idlivros");
+            }
+            rs.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+    
+    public LivrosBEAN findIdLivroNome(String titulo){
+        LivrosBEAN result = null;
+        ResultSet rs = null;
+        titulo = "%"+titulo+"%";
+        rs = MySQLDAO.getResultSet("SELECT * FROM LIVROS WHERE titulo like ?", titulo);
+        try {
+            if (rs.next()) {
+                result = new LivrosBEAN(rs.getInt("idlivros"), rs.getString("titulo"),rs.getString("Subtitulo"), rs.getInt("paginas"),
+                        rs.getInt("editoras_id"), rs.getInt("status"));
             }
             rs.close();
         } catch (SQLException e) {

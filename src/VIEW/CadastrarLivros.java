@@ -4,12 +4,15 @@ import CONTROLLER.Controle;
 import MODEL.AutoresBEAN;
 import MODEL.GenerosBEAN;
 import MODEL.LivrosBEAN;
+import MODEL.EditorasBEAN;
 import java.util.ArrayList;
 
 public class CadastrarLivros extends javax.swing.JInternalFrame {
 
     ArrayList<GenerosBEAN> generos = new ArrayList();
     ArrayList<AutoresBEAN> autores = new ArrayList();
+    ArrayList<EditorasBEAN> editoras = new ArrayList();
+    
     
     public CadastrarLivros() {
         initComponents();
@@ -32,6 +35,8 @@ public class CadastrarLivros extends javax.swing.JInternalFrame {
         comboGeneros = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         comboAutores = new javax.swing.JComboBox<>();
+        jLabel6 = new javax.swing.JLabel();
+        comboEditora = new javax.swing.JComboBox<>();
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
@@ -53,6 +58,8 @@ public class CadastrarLivros extends javax.swing.JInternalFrame {
 
         jLabel5.setText("Autores:");
 
+        jLabel6.setText("Editora:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -60,6 +67,10 @@ public class CadastrarLivros extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addGap(18, 18, 18)
+                        .addComponent(comboEditora, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(bCadastrar)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel5)
@@ -107,9 +118,13 @@ public class CadastrarLivros extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(comboAutores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(comboEditora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(9, 9, 9)
                 .addComponent(bCadastrar)
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         pack();
@@ -125,6 +140,10 @@ public class CadastrarLivros extends javax.swing.JInternalFrame {
         for(AutoresBEAN a : autores){
             comboAutores.addItem(a.getNome());
         }
+        editoras = control.listaEditoras();
+        for(EditorasBEAN e : editoras){
+            comboEditora.addItem(e.getRazao());
+        }
         
     }
     
@@ -136,8 +155,9 @@ public class CadastrarLivros extends javax.swing.JInternalFrame {
         int paginas = Integer.parseInt(textPag.getText());
         int genero = comboGeneros.getSelectedIndex()+1;
         int autor = comboAutores.getSelectedIndex()+1;
+        int idEditora = comboEditora.getSelectedIndex();
         int status = 1;
-        LivrosBEAN livro = new LivrosBEAN(titulo, subtitulo, paginas, genero, status, autor);
+        LivrosBEAN livro = new LivrosBEAN(0, titulo, subtitulo, paginas, idEditora, genero, status, autor);
         control.addLivros(livro);
     }//GEN-LAST:event_bCadastrarActionPerformed
 
@@ -153,12 +173,14 @@ public class CadastrarLivros extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bCadastrar;
     private javax.swing.JComboBox<String> comboAutores;
+    private javax.swing.JComboBox<String> comboEditora;
     private javax.swing.JComboBox<String> comboGeneros;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JTextField textPag;
     private javax.swing.JTextField textSubTitulo;
     private javax.swing.JTextField textTitulo;

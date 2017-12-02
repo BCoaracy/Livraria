@@ -107,6 +107,9 @@ public class Controle {
     public LivrosBEAN findLivros(int id){
         return LivrosDAO.getInstance().findLivro(id);
     }
+    public LivrosBEAN findIdLivroNome(String titulo){
+        return LivrosDAO.getInstance().findIdLivroNome(titulo);
+    }
     
     public int findIdLivros(LivrosBEAN livro){
         return LivrosDAO.getInstance().findIdLivro(livro);

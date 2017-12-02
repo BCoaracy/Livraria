@@ -67,7 +67,7 @@ public class Livros extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cadastrarActionPerformed
 
     private void editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarActionPerformed
-        EditarLivro.getInstance().setVisible(true);
+        EditarLivros.getInstance().setVisible(true);
     }//GEN-LAST:event_editarActionPerformed
 
     private static Livros instance = null;
