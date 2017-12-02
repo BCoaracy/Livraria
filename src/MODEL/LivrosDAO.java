@@ -25,7 +25,7 @@ public class LivrosDAO {
     }
     
     public long create(LivrosBEAN livro) {
-        String query = "INSERT INTO LIVROS (titulo, subtitulo, paginas, editoras_id status ) VALUES (?,?,?,?,?)";
+        String query = "INSERT INTO LIVROS (titulo, subtitulo, paginas, editoras_id, status ) VALUES (?,?,?,?,?)";
         return MySQLDAO.executeQuery(query, livro.getTitulo(), livro.getSubtitulo(),
                                         livro.getPaginas(), livro.getIdEditora(), livro.getStatus());
     }

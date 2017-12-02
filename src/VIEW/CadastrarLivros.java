@@ -138,6 +138,7 @@ public class CadastrarLivros extends javax.swing.JInternalFrame {
         }
         autores = control.listaAutores();
         for(AutoresBEAN a : autores){
+            if(a.getStatus()==1)
             comboAutores.addItem(a.getNome());
         }
         editoras = control.listaEditoras();
@@ -155,7 +156,7 @@ public class CadastrarLivros extends javax.swing.JInternalFrame {
         int paginas = Integer.parseInt(textPag.getText());
         int genero = comboGeneros.getSelectedIndex()+1;
         int autor = comboAutores.getSelectedIndex()+1;
-        int idEditora = comboEditora.getSelectedIndex();
+        int idEditora = comboEditora.getSelectedIndex()+1;
         int status = 1;
         LivrosBEAN livro = new LivrosBEAN(0, titulo, subtitulo, paginas, idEditora, genero, status, autor);
         control.addLivros(livro);

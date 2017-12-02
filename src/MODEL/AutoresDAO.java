@@ -34,7 +34,7 @@ public class AutoresDAO {
     }
     
     public ArrayList<AutoresBEAN> findAllAutores(){
-        return listaAutores ("SELECT * FROM AUTORES ORDER BY Nome");
+        return listaAutores ("SELECT * FROM AUTORES ORDER BY idAutor");
     }
     
     public ArrayList<AutoresBEAN> listaAutores(String query) {
