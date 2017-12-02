@@ -12,7 +12,7 @@ public class CadastrarLivros extends javax.swing.JInternalFrame {
     ArrayList<GenerosBEAN> generos = new ArrayList();
     ArrayList<AutoresBEAN> autores = new ArrayList();
     ArrayList<EditorasBEAN> editoras = new ArrayList();
-    
+    EditorasBEAN editora = new EditorasBEAN();
     
     public CadastrarLivros() {
         initComponents();
@@ -156,7 +156,8 @@ public class CadastrarLivros extends javax.swing.JInternalFrame {
         int paginas = Integer.parseInt(textPag.getText());
         int genero = comboGeneros.getSelectedIndex()+1;
         int autor = comboAutores.getSelectedIndex()+1;
-        int idEditora = comboEditora.getSelectedIndex()+1;
+        editora.setRazao((String)comboEditora.getSelectedItem());
+        int idEditora = control.findIdEditora(editora);
         int status = 1;
         LivrosBEAN livro = new LivrosBEAN(0, titulo, subtitulo, paginas, idEditora, genero, status, autor);
         control.addLivros(livro);

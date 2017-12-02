@@ -79,9 +79,9 @@ public class EditorasDAO {
         int result = 0;
         ResultSet rs = null;
         rs = MySQLDAO.getResultSet(
-        "SELECT * FROM Contatos WHERE Razao= ? and Endereco= ? and Telefone=  ? "
-                ,editora.getRazao(),editora.getEndereco(),editora.getTelefone());
-
+        //"SELECT * FROM EDITORAS WHERE Razao= ? and Endereco= ? and Telefone=  ? "
+        //        ,editora.getRazao(),editora.getEndereco(),editora.getTelefone());
+        "SELECT * FROM EDITORAS WHERE RAZAO = ?", editora.getRazao());
  try {
             if (rs.next()) {
                 result = rs.getInt("id");
